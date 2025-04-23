@@ -1,12 +1,11 @@
-# Two chords intersect each other.
 from pulp import *
+
+#Check if two chords intersect each other
 def doIntersect(a,b):
     if (a[0] not in b and a[1] not in b):
         return (a[0] < b[0] and b[0] < a[1] and b[1] > a[1]) or (b[0] < a[0] and a[0]< b[1] and a[1] > b[1])
     return False
     
-    
- #show that |C|=12 is impossible
 def ChargingOfHBlocks():
     n = 12 #number of real + edge vertices
     nnn = n**3 # sufficiently large number

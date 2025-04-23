@@ -89,8 +89,7 @@ constraints = [
 # Initial guess
 x0 = [0.3, 3.0]
 
-# Bounds: (optional) you can set them if needed
-bounds = [(0, 1), (0, None)]  # alpha between 0 and 1, beta >= 0
+bounds = [(0, 0.5), (0, None)]  # alpha between 0 and 0.5, beta >= 0
 
 # Solve
 result = minimize(objective, x0, constraints=constraints, bounds=bounds)
