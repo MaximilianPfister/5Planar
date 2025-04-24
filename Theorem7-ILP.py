@@ -44,7 +44,7 @@ def ChargingOfHBlocks():
     "charge_from_3_triangle", range(1,12,2), lowBound=0, upBound=5, cat=LpInteger) #at most five.
 
     #Auxilliary for 2-triangle case 
-    # inside means in interior or on boundary of H block
+    # _inside means in interior or on boundary of H block
     four_crossings_inside = pulp.LpVariable.dicts(
     "four_crossings", exterior_edges, lowBound=0, upBound=1, cat=LpInteger)
     five_crossings_inside = pulp.LpVariable.dicts(

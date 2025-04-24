@@ -4,9 +4,15 @@ from scipy.optimize import minimize
 # var[0] = \alpha
 # var[1] = \beta
 
+
 # Define the objective: maximize alpha[0] <=> minimize -alpha[0]
 def objective(var):
     return -var[0]
+    
+#Used for strict inequality
+
+epsilon = 1e-7
+
 # Constraints list
 constraints = [
 
@@ -33,10 +39,10 @@ constraints = [
         'fun': lambda var: 9/5 - 6 * var[0]
     },
 
-    # beta < 3  
+    # 8/alpha > 27 <=> beta < 3 -> to support strict inequality, we use an epsilon value 
     {
         'type': 'ineq',
-        'fun': lambda var: 3 - var[1]
+        'fun': lambda var: 3 - (var[1]+epsilon)
     },
     # alpha <= 9/31
     {
@@ -97,7 +103,6 @@ result = minimize(objective, x0, constraints=constraints, bounds=bounds)
 # Output
 print("Success:", result.success)
 print("Status:", result.message)
-print("var[0] =", result.x[0])
-print("var[1] =", result.x[1])
-print("Result is epsilon-equal to 49/170: ",abs(-result.fun - 49/170) < 0.00000001)
+print("alpha =", result.x[0])
+print("Result is epsilon-equal to 49/170: ",abs(-result.fun - 49/170) < epsilon)
 

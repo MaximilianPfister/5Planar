@@ -1,5 +1,5 @@
 from scipy.optimize import minimize
-# Code for Observation 19:
+# Code for Observation 9:
 # var[0] = alpha
 # var[1] = beta
 
@@ -7,9 +7,9 @@ from scipy.optimize import minimize
 def objective(var):
     return -var[0]
 
+epsilon = 1e-7
 # Constraints list
 constraints = [
-
     # Relate beta to alpha
     {
         'type': 'eq',
@@ -67,5 +67,4 @@ result = minimize(objective, x0, constraints=constraints, bounds=bounds)
 print("Success:", result.success)
 print("Status:", result.message)
 print("alpha =", result.x[0])
-print("beta =", result.x[1])
-print("Result is epsilon-equal to 9/31: ",abs(-result.fun - 9/31) < 0.00000001)
+print("Result is epsilon-equal to 9/31: ",abs(-result.fun - 9/31) < epsilon)
